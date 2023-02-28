@@ -3,9 +3,26 @@ import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Seo from "../components/Seo";
 
-export default function Home({ results }) {
+interface IResultsProps {
+  adult: boolean;
+  backdrop_path: string;
+  genre_ids: number[];
+  id: number;
+  original_language: string;
+  original_title: string;
+  overview: string;
+  popularity: number;
+  poster_path: string;
+  release_date: string;
+  title: string;
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
+}
+
+export default function Home({ results }: { results: IResultsProps[] }) {
   const router = useRouter();
-  const onClick = (id, title) => {
+  const onClick = (id: number, title: string) => {
     router.push(`/movies/${title}/${id}`);
   };
   return (
